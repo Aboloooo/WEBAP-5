@@ -58,7 +58,6 @@ include_once("../MyLibrary.php");
         </div>
     </section>
 
-
     <section id="About">
         <h1 class="section-title">About Our System</h1>
         <div class="sectionIntro">
