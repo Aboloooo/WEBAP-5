@@ -1,0 +1,692 @@
+:root {
+  /* Primary Colors */
+  --primary-color: #1e88e5; /* Modern tech blue */
+  --primary-dark: #1565c0; /* Darker for headers/buttons */
+  --primary-light: #42a5f5; /* Lighter hover */
+  --primary-hover: #1976d2; /* Hover effect */
+  --primary-gradient: linear-gradient(135deg, #42a5f5, #1565c0);
+
+  /* Neutral Colors */
+  --text-dark: #212121; /* Dark gray for text */
+  --text-medium: #424242; /* Medium gray */
+  --text-light: #616161; /* Light gray */
+  --text-white: #ffffff; /* White */
+  --text-muted: #b0bec5; /* Muted for secondary info */
+
+  /* Background Colors */
+  --bg-white: #f9f9f9; /* Soft off-white */
+  --bg-light: #e3f2fd; /* Light blue background */
+  --bg-overlay: rgba(255, 255, 255, 0.08); /* Overlay for forms */
+  --bg-gradient: linear-gradient(135deg, #42a5f5, #1565c0);
+
+  /* Border & Divider Colors */
+  --border-light: #cfd8dc; /* Soft gray */
+  --border-medium: #90a4ae; /* Medium gray */
+  --border-white: #ffffff; /* White */
+  --divider-color: #eceff1; /* Divider color */
+
+  /* State Colors */
+  --hover-color: #42a5f5; /* Hover highlights */
+  --focus-glow: rgba(66, 165, 245, 0.2);
+  --focus-glow-white: rgba(255, 255, 255, 0.2);
+
+  /* Shadow Colors */
+  --shadow-light: rgba(0, 0, 0, 0.12);
+  --shadow-medium: rgba(0, 0, 0, 0.18);
+  --shadow-heavy: rgba(0, 0, 0, 0.28);
+
+  /* Link Colors */
+  --link-color: #1e88e5;
+  --link-hover: #1565c0;
+  --link-light: #90caf9;
+
+  /* Layout Spacing */
+  --nav-height: 80px;
+  --container-max-width: 1200px;
+  --border-radius: 16px;
+  --border-radius-small: 6px;
+
+  /* Alert Colors for Temperature */
+  --temp-normal: #43a047; /* Green for normal range */
+  --temp-warning: #fbc02d; /* Yellow/orange for warning */
+  --temp-danger: #e53935; /* Red for critical alert */
+}
+
+/* === Base Styles === */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-height);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  line-height: 1.6;
+  color: var(--text-dark);
+  background-color: var(--bg-white);
+  min-height: 100vh;
+}
+
+/* === Navigation Bar Styles === */
+.navbar {
+  background-color: var(--bg-white);
+  border-bottom: 1px solid var(--border-light);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+.nav-container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.nav-logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  letter-spacing: 0.5px;
+  text-decoration: none;
+}
+
+/* Navigation Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-medium);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid transparent;
+  position: relative;
+}
+
+.nav-links a:hover {
+  color: var(--hover-color);
+  border-bottom-color: var(--hover-color);
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--hover-color);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Active Navigation State */
+.nav-links a.active {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+}
+
+/* === Login Styles in index page === */
+.login_container_indexPage {
+  position: sticky;
+  top: 70px;
+  margin: 0 auto;
+  float: right;
+  width: 10%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login_container_indexPage div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.login_container_indexPage img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.login_container_indexPage img:hover {
+  transform: scale(1.05);
+}
+
+/* === Main Content Styles === */
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 2rem 0;
+  color: var(--text-white);
+}
+
+section {
+  background: var(--primary-gradient);
+  width: 80%;
+  height: 90vh;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 15px var(--shadow-light);
+}
+.sectionIntro {
+  width: 90%;
+  margin: 0 auto 2rem auto;
+  text-align: center;
+  color: var(--text-white);
+}
+
+/* === Sign In/Out Form Container Styles === */
+.main_container {
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signInOut_form_container1 {
+  position: relative;
+  margin: auto;
+  width: 100%;
+  max-width: 900px;
+  background-color: var(--bg-white);
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 25px var(--shadow-light);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.signInOut_form_container1:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px var(--shadow-heavy);
+}
+
+/* === Inner Container (Split Layout) === */
+.signInOut_form_container2 {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  min-height: 550px;
+  position: relative;
+  z-index: 1;
+}
+
+/* === Left Side: Create User Form Area === */
+.left_side_container {
+  flex: 1;
+  background: var(--primary-gradient);
+  color: var(--text-white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.left_side_container::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  animation: float 6s ease-in-out infinite;
+}
+
+/* --- Create User Form --- */
+.create_user_form {
+  width: 100%;
+  max-width: 350px;
+  background-color: var(--bg-overlay);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px var(--shadow-light);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.create_user_form h2 {
+  text-align: center;
+  color: var(--text-white);
+  margin-bottom: 1rem;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.create_user_form label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.create_user_form input,
+.create_user_form select {
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: var(--border-radius-small);
+  font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--text-medium);
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.create_user_form input:focus,
+.create_user_form select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--focus-glow-white);
+  transform: translateY(-1px);
+  border-color: var(--text-white);
+}
+
+/* Submit Button (Left Side) */
+.create_user_form button {
+  padding: 0.9rem;
+  border: none;
+  border-radius: var(--border-radius-small);
+  background-color: var(--bg-white);
+  color: var(--primary-dark);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.create_user_form button:hover {
+  background-color: var(--bg-light);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-medium);
+}
+
+/* === Right Side: Sign-In Form Area === */
+.right_side_container {
+  flex: 1;
+  background-color: var(--bg-white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2.5rem;
+}
+
+.right_side_container form {
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.right_side_container h2 {
+  text-align: center;
+  color: var(--text-medium);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+/* --- Input Fields --- */
+.right_side_container label {
+  color: var(--text-light);
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.right_side_container input {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-medium);
+  border-radius: var(--border-radius-small);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: var(--bg-white);
+}
+
+.right_side_container input:focus {
+  border-color: var(--primary-light);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--focus-glow);
+  transform: translateY(-1px);
+}
+
+/* --- Sign Up Options --- */
+.signUpOptions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  margin: 0.5rem 0;
+}
+
+.signUpOptions a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.signUpOptions a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+/* --- Submit Button (Right Side) --- */
+.right_side_container button {
+  padding: 0.9rem;
+  border: none;
+  border-radius: var(--border-radius-small);
+  background-color: var(--primary-light);
+  color: var(--text-white);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.right_side_container button:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-medium);
+}
+
+/* === Already Have an Account Section === */
+.account_link {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.account_link a {
+  color: var(--text-white);
+  font-weight: 600;
+  margin-left: 0.3rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.account_link a:hover {
+  color: var(--link-light);
+  border-bottom-color: var(--link-light);
+}
+
+/* --- Separator Line --- */
+.seperator {
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--divider-color);
+  position: relative;
+}
+
+.seperator::before {
+  content: "or";
+  position: absolute;
+  top: -0.7rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-white);
+  padding: 0 1rem;
+  color: var(--text-light);
+  font-size: 0.8rem;
+}
+
+/* === Overlay Styles === */
+.overlayout {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: var(--bg-white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+  border-radius: var(--border-radius);
+  animation: fadeIn 0.5s ease-out;
+}
+
+.overlay_content img {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 1.5rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 1rem;
+}
+.overlay_content {
+  background-color: var(--bg-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--shadow-heavy);
+}
+
+.form-message {
+  padding: 0.5rem;
+  border-radius: var(--border-radius-small);
+  margin: 0.5rem 0;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.form-message.error {
+  background-color: #ffebee;
+  color: #c62828;
+  border: 1px solid #ffcdd2;
+}
+
+.form-message.success {
+  background-color: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+/* === img rotator of Home page === */
+.rotator {
+  width: 90%;
+  height: auto;
+  margin: auto auto;
+  border-radius: var(--border-radius);
+  background: var(--bg-white);
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+.rotatorImg {
+  width: 40%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* home content style */
+
+.sectionIntro p {
+  font-size: 1.1rem;
+  margin: auto auto;
+  color: var(--text-white);
+}
+
+.home_features {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.feature_item {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4px);
+  padding: 1.5rem;
+  width: 260px;
+  border-radius: var(--border-radius-small);
+  color: var(--text-white);
+  box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+.feature_item h3 {
+  margin-bottom: 0.6rem;
+  color: var(--text-white);
+}
+
+.feature_item p {
+  color: var(--text-light);
+}
+
+/* About section desing */
+.features {
+  display: flex;
+  flex-direction: row;
+  width: 40%;
+  gap: 5rem;
+
+  height: auto;
+  background-color: var(--temp-warning);
+}
+
+/* === Mobile Responsive === */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 0.5rem;
+    display: none;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links a {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0;
+  }
+
+  /* Form Container Responsive */
+  .signInOut_form_container2 {
+    flex-direction: column;
+  }
+
+  .left_side_container {
+    display: none; /* Hide left section on smaller screens */
+  }
+
+  .right_side_container {
+    width: 100%;
+    padding: 2rem 1.5rem;
+  }
+
+  .main_container {
+    padding: 1rem 0.5rem;
+  }
+
+  .signInOut_form_container1 {
+    margin: 1rem;
+  }
+
+  .overlay_content {
+    padding: 2rem 1.5rem;
+  }
+
+  .overlay_content h3 {
+    font-size: 1.5rem;
+  }
+
+  .login_container_indexPage {
+    position: static;
+    width: 100%;
+    float: none;
+    margin: 1rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .signInOut_form_container1 {
+    margin: 0.5rem;
+    border-radius: 12px;
+  }
+
+  .right_side_container {
+    padding: 1.5rem 1rem;
+  }
+
+  .create_user_form,
+  .right_side_container form {
+    padding: 1.5rem;
+  }
+
+  .signUpOptions {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .nav-container {
+    padding: 0.75rem;
+  }
+}
+
+/* === Print Styles === */
+@media print {
+  .navbar,
+  .login_container_indexPage,
+  .overlayout {
+    display: none !important;
+  }
+
+  .signInOut_form_container1 {
+    box-shadow: none !important;
+    border: 1px solid var(--border-medium);
+  }
+}
