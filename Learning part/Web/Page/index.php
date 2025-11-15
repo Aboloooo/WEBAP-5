@@ -24,7 +24,6 @@ include_once("../MyLibrary.php");
 
     <section id="Home">
         <h1>Smart Temperature Monitoring Made Simple</h1>
-
         <div class="sectionIntro">
             <p>
                 View accurate, real-time temperature data from all connected sensors.
